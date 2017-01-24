@@ -1,10 +1,10 @@
 ```python
-import paramiko
-host = "ftp.example.com"
-port = 22
+import paramiko # we use the paramiko library to connect to sftp
+host = "ftp.example.com" # the ftp site you're connecting to
+port = 22 # default port
 transport = paramiko.Transport((host, port))
-password = "password"
-username = "username"
+password = "yourpassword" # Replace 'yourpassword' with your password
+username = "yourusername" # Replace 'yourusername' with your username
 transport.connect(username = username, password = password)
 sftp = paramiko.SFTPClient.from_transport(transport)
 latest = 0
