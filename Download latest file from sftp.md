@@ -1,9 +1,4 @@
 ```python
-
-import paramiko
-```
-
-
 import paramiko
 host = "ftp.example.com"
 port = 22
