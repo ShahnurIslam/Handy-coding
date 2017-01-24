@@ -1,0 +1,21 @@
+```python
+import paramiko
+host = "ftp.example.com"
+port = 22
+transport = paramiko.Transport((host, port))
+password = "password"
+username = "username"
+transport.connect(username = username, password = password)
+sftp = paramiko.SFTPClient.from_transport(transport)
+latest = 0
+sftp.chdir('Report') 
+latestfile = None
+for fileattr in sftp.listdir_attr():
+	if  fileattr.st_mtime > latest:
+		latest = fileattr.st_mtime
+		latestfile = fileattr.filename
+
+if latestfile is not None:
+    localpath = 'directory you want to save the file' + latestfile
+    sftp.get(latestfile, localpath)
+```
